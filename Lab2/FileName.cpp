@@ -3,15 +3,15 @@
 using namespace std;
 int main()
 {
-	//Задание 1.2 4000
+	//Задание 1.2 10000
 	setlocale(LC_ALL,"Rus");
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 
 	clock_t start, end; // объявляем переменные для определения времени выполнения
 	double cpu_time_used;
-	int ROW = 4000;
-	int COL = 4000; int elem_c;
+	int ROW = 10000;
+	int COL = 10000; int elem_c;
 	int i = 0, j = 0, r;
 	unsigned long** a = new unsigned long* [ROW];
 	unsigned long** b = new unsigned long* [ROW];
@@ -22,9 +22,9 @@ int main()
 		c[i] = new unsigned long[COL];
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
-	while (i< 4000)
+	while (i< 10000)
 	{
-		while (j< 4000)
+		while (j< 10000)
 		{
 			a[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -33,9 +33,9 @@ int main()
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
 	i = 0; j = 0;
-	while (i< 4000)
+	while (i< 10000)
 	{
-		while (j< 4000)
+		while (j< 10000)
 		{
 			b[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -45,12 +45,12 @@ int main()
 	
 
 	start = clock();
-	for (i = 0; i< 4000; i++)
+	for (i = 0; i< 10000; i++)
 	{
-		for (j = 0; j < 4000; j++)
+		for (j = 0; j < 10000; j++)
 		{
 			elem_c = 0;
-			for (r = 0; r < 4000; r++)
+			for (r = 0; r < 10000; r++)
 			{
 				elem_c = elem_c + a[i][r] * b[r][j];
 				c[i][j] = elem_c;
