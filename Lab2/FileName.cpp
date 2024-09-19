@@ -3,18 +3,18 @@
 using namespace std;
 int main(void)
 {
-	//Задание 1.2 100
+	//Задание 1.2 200
 	setlocale(LC_ALL,"Rus");
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 	clock_t start, end; // объявляем переменные для определения времени выполнения
 	double cpu_time_used;
 	int i = 0, j = 0, r;
-	int a[100][100], b[100][100], c[100][100], elem_c;
+	int a[200][200], b[200][200], c[200][200], elem_c;
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
-	while (i< 100)
+	while (i< 200)
 	{
-		while (j< 100)
+		while (j< 200)
 		{
 			a[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -23,9 +23,9 @@ int main(void)
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
 	i = 0; j = 0;
-	while (i< 100)
+	while (i< 200)
 	{
-		while (j< 100)
+		while (j< 200)
 		{
 			b[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -34,12 +34,12 @@ int main(void)
 	}
 
 	start = clock();
-	for (i = 0; i< 100; i++)
+	for (i = 0; i< 200; i++)
 	{
-		for (j = 0; j < 100; j++)
+		for (j = 0; j < 200; j++)
 		{
 			elem_c = 0;
-			for (r = 0; r < 100; r++)
+			for (r = 0; r < 200; r++)
 			{
 				elem_c = elem_c + a[i][r] * b[r][j];
 				c[i][j] = elem_c;
@@ -51,5 +51,8 @@ int main(void)
 	cout << "Время выполнения:" << cpu_time_used << "секунд" << endl;
 
 	return(0);
-	//Время выполнения 0,003 секунд
+	//Время выполнения при размере матрицы  100 0,003 секунд
+	//Время выполнения при размере матрицы  200 0,023 секунд
+
+	
 }
