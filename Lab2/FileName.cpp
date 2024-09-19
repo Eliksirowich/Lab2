@@ -3,28 +3,28 @@
 using namespace std;
 int main()
 {
-	//Задание 1.2 2000
+	//Задание 1.2 4000
 	setlocale(LC_ALL,"Rus");
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 
 	clock_t start, end; // объявляем переменные для определения времени выполнения
 	double cpu_time_used;
-	int ROW = 2000;
-	int COL = 2000; int elem_c;
+	int ROW = 4000;
+	int COL = 4000; int elem_c;
 	int i = 0, j = 0, r;
-	int** a = new int* [ROW];
-	int** b = new int* [ROW];
-	int** c = new int* [ROW];
+	unsigned long** a = new unsigned long* [ROW];
+	unsigned long** b = new unsigned long* [ROW];
+	unsigned long** c = new unsigned long* [ROW];
 	for (int i = 0; i < ROW; ++i) {
-		a[i] = new int[COL];
-		b[i] = new int[COL];
-		c[i] = new int[COL];
+		a[i] = new unsigned long[COL];
+		b[i] = new unsigned long[COL];
+		c[i] = new unsigned long[COL];
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
-	while (i< 2000)
+	while (i< 4000)
 	{
-		while (j< 2000)
+		while (j< 4000)
 		{
 			a[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -33,9 +33,9 @@ int main()
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
 	i = 0; j = 0;
-	while (i< 2000)
+	while (i< 4000)
 	{
-		while (j< 2000)
+		while (j< 4000)
 		{
 			b[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -45,12 +45,12 @@ int main()
 	
 
 	start = clock();
-	for (i = 0; i< 2000; i++)
+	for (i = 0; i< 4000; i++)
 	{
-		for (j = 0; j < 2000; j++)
+		for (j = 0; j < 4000; j++)
 		{
 			elem_c = 0;
-			for (r = 0; r < 2000; r++)
+			for (r = 0; r < 4000; r++)
 			{
 				elem_c = elem_c + a[i][r] * b[r][j];
 				c[i][j] = elem_c;
@@ -67,5 +67,5 @@ int main()
 	//Время выполнения при размере матрицы  400 0,275 секунд
 	//Время выполнения при размере матрицы  1000 10,22 секунд
 	//Время выполнения при размере матрицы  2000 87,918 секунд
-	
+
 }
