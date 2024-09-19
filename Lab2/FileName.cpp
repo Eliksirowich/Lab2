@@ -3,15 +3,15 @@
 using namespace std;
 int main()
 {
-	//Задание 1.2 1000
+	//Задание 1.2 2000
 	setlocale(LC_ALL,"Rus");
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 
 	clock_t start, end; // объявляем переменные для определения времени выполнения
 	double cpu_time_used;
-	int ROW = 1000;
-	int COL = 1000; int elem_c;
+	int ROW = 2000;
+	int COL = 2000; int elem_c;
 	int i = 0, j = 0, r;
 	int** a = new int* [ROW];
 	int** b = new int* [ROW];
@@ -22,9 +22,9 @@ int main()
 		c[i] = new int[COL];
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
-	while (i< 1000)
+	while (i< 2000)
 	{
-		while (j< 1000)
+		while (j< 2000)
 		{
 			a[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -33,9 +33,9 @@ int main()
 	}
 	srand(time(NULL)); // инициализируем параметры генератора случайных чисел
 	i = 0; j = 0;
-	while (i< 1000)
+	while (i< 2000)
 	{
-		while (j< 1000)
+		while (j< 2000)
 		{
 			b[i][j] = rand() % 100 + 1; // заполняем массив случайными числами
 			j++;
@@ -45,12 +45,12 @@ int main()
 	
 
 	start = clock();
-	for (i = 0; i< 1000; i++)
+	for (i = 0; i< 2000; i++)
 	{
-		for (j = 0; j < 1000; j++)
+		for (j = 0; j < 2000; j++)
 		{
 			elem_c = 0;
-			for (r = 0; r < 1000; r++)
+			for (r = 0; r < 2000; r++)
 			{
 				elem_c = elem_c + a[i][r] * b[r][j];
 				c[i][j] = elem_c;
@@ -66,6 +66,6 @@ int main()
 	//Время выполнения при размере матрицы  200 0,023 секунд
 	//Время выполнения при размере матрицы  400 0,275 секунд
 	//Время выполнения при размере матрицы  1000 10,22 секунд
-
+	//Время выполнения при размере матрицы  2000 87,918 секунд
 	
 }
