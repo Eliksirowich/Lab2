@@ -260,8 +260,8 @@ void qs(int* items, int left, int right) //вызов функции: qs(items, 0, count-1);
 
 
 int main() {
-	///Задание 2.2
-	srand(time(NULL));
+	//Задание 2.2
+	/*srand(time(NULL));
 	setlocale(LC_ALL, "RUS");
 
 	clock_t start, end; 
@@ -293,7 +293,42 @@ int main() {
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
 
-	delete[] items;  
+	delete[] items; */
 
+
+	//Задание 2.3
+	srand(time(NULL));
+	setlocale(LC_ALL, "RUS");
+
+	clock_t start, end;
+	double cpu_time_used;
+
+	int count = 10000;
+	int* items = new int[count];
+
+
+	for (int i = 0; i < count; i++) {
+		items[i] = count - i;
+		cout << items[i] << endl;
+	}
+
+
+
+	start = clock();
+	shell(items, count);
+	end = clock();
+
+
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+	
+	start = clock();
+	qs(items, 0, count - 1);
+
+	end = clock();
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+
+	delete[] items;
 	system("pause");
 }
