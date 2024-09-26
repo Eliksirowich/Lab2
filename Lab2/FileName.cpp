@@ -1,5 +1,6 @@
 //#include<iostream>
 //#include <time.h>
+// #include <stdio.h>
 //using namespace std;
 /*int main()
 {
@@ -257,7 +258,9 @@ void qs(int* items, int left, int right) //вызов функции: qs(items, 0, count-1);
 	if (i < right) qs(items, i, right);
 }
 
-
+int compare(const void* a, const void* b) {
+	return (*(int*)a - *(int*)b); 
+}
 
 int main() {
 	//Задание 2.2
@@ -333,7 +336,7 @@ int main() {
 
 
 	//Задание 2.4
-	srand(time(NULL));
+	/*srand(time(NULL));
 	setlocale(LC_ALL, "RUS");
 
 	clock_t start, end;
@@ -369,7 +372,45 @@ int main() {
 		cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 		cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
 
-		delete[] items;
-		system("pause");
+		delete[] items;*/
+
+
+		//Задание 2.5
+     srand(time(NULL));
+     setlocale(LC_ALL, "RUS");
+
+     clock_t start, end;
+     double cpu_time_used;
+
+     int count = 10000; 
+     int* items = new int[count]; 
+
+
+	 for (int i = 0; i < count; i++)
+	 {
+		 items[i] = rand() % 100;
+		 cout << items[i] << endl;
+
+
+	 }
+
+
+     start = clock();
+     qsort(items, count, sizeof(int), compare); 
+     end = clock();
+	 for (int i = 0; i < count; i++)
+	 {
+		 
+		 cout << items[i] << endl;
+
+
+	 }
+
+     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+     cout << "Время работы qsort: " << cpu_time_used << " секунд" << endl;
+ 
+
+
+	 system("pause");
 	
 }
