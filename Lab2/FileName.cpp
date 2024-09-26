@@ -1,10 +1,10 @@
-#include<iostream>
-#include <time.h>
-using namespace std;
-int main()
+//#include<iostream>
+//#include <time.h>
+//using namespace std;
+/*int main()
 {
 	//Задание 1.2 10000
-	setlocale(LC_ALL,"Rus");
+	
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 
@@ -60,6 +60,18 @@ int main()
 	end = clock();
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 	cout << "Время выполнения:" << cpu_time_used << "секунд" << endl;
+	
+
+	setlocale(LC_ALL, "Rus");
+
+
+
+
+
+
+
+
+
 
 	return(0);
 	//Время выполнения при размере матрицы  100 0,003 секунд
@@ -68,4 +80,119 @@ int main()
 	//Время выполнения при размере матрицы  1000 10,22 секунд
 	//Время выполнения при размере матрицы  2000 87,918 секунд
 
+}*/
+#include<iostream>
+#include<cstdlib>
+#include<time.h>
+using namespace std;
+
+
+void shell(int* items, int count)
+{
+
+	int i, j, gap, k;
+	int x, a[5];
+
+	a[0] = 9; a[1] = 5; a[2] = 3; a[3] = 2; a[4] = 1;
+
+	for (k = 0; k < 5; k++) {
+		gap = a[k];
+		for (i = gap; i < count; ++i) {
+			x = items[i];
+			for (j = i - gap; (x < items[j]) && (j >= 0); j = j - gap)
+				items[j + gap] = items[j];
+			items[j + gap] = x;
+		}
+	}
+}
+
+void qs(int* items, int left, int right) //вызов функции: qs(items, 0, count-1);
+{
+	int i, j;
+	int x, y;
+
+
+
+	i = left; j = right;
+
+	/* выбор компаранда */
+	x = items[(left + right) / 2];
+
+	do {
+		while ((items[i] < x) && (i < right)) i++;
+		while ((x < items[j]) && (j > left)) j--;
+
+		if (i <= j) {
+			y = items[i];
+			items[i] = items[j];
+			items[j] = y;
+			i++; j--;
+		}
+	} while (i <= j);
+
+	if (left < j) qs(items, left, j);
+	if (i < right) qs(items, i, right);
+}
+
+
+
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+	double cpu_time_used;
+	clock_t start, end;
+	srand(time(NULL));
+	int count = 10;
+	int* items = new int[count];
+
+	for (int i = 0; i < count; i++)
+	{
+		items[i] = rand() % 100;
+		cout << items[i] << endl;
+
+
+	}
+	cout << "///////" << endl;
+	start = clock();
+	shell(items, count);
+	end = clock();
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	for (int i = 0; i < count; i++)
+	{
+
+		cout << items[i] << endl;
+
+
+	}
+	cout << cpu_time_used << "секунд" << endl;
+	for (int i = 0; i < count; i++)
+	{
+		items[i] = 0;
+	}
+	cout << "&&&&&" << endl;
+	for (int i = 0; i < count; i++)
+	{
+
+		items[i] = rand() % 100;
+		cout << items[i] << endl;
+
+
+	}
+	start = clock();
+	qs(items, 0, count - 1);
+	end = clock();
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	cout << "&&&&&" << endl;
+	for (int i = 0; i < count; i++)
+	{
+
+
+		cout << items[i] << endl;
+
+
+	}
+	cout << cpu_time_used << "секунд" << endl;
+	delete[]items;
+
+	system("pause");
 }
