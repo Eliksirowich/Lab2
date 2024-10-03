@@ -414,7 +414,7 @@ int main() {
 	 system("pause");*/
 
 	 //«адание 2.5(возрастание)
-     srand(time(NULL));
+    /* srand(time(NULL));
      setlocale(LC_ALL, "RUS");
 
      clock_t start, end;
@@ -443,5 +443,58 @@ int main() {
 
 	 cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 	 cout << "¬рем€ работы qsort при возрастании: " << cpu_time_used << " секунд" << endl;
+	 */
+	 //«адание 2.5(убывание)
+     /* srand(time(NULL));
+	setlocale(LC_ALL, "RUS");
+
+	clock_t start, end;
+	double cpu_time_used;
+
+	int count = 10000;
+	int* items = new int[count];
+
+
+	for (int i = 0; i < count; i++) {
+		items[i] = count - i;
+		cout << items[i] << endl;
+	}
+
+
+
+	start = clock();
+	qsort(items, count, sizeof(int), compare);
+	end = clock();
+
+
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	cout << "¬рем€ выполнени€ qsort при убывании: " << cpu_time_used << " секунд" << endl;*/
+    srand(time(NULL));
+	setlocale(LC_ALL, "RUS");
+
+	clock_t start, end;
+	double cpu_time_used;
+
+	int count = 10000;
+	int* items = new int[count];
+
+	for (int i = 0; i < count / 2; i++) {
+		items[i] = i + 1;
+	}
 	
+	for (int i = count / 2; i < count; i++) {
+		items[i] = count - i;
+	}
+
+	for (int i = 0; i < count; i++) {
+		cout << items[i] << endl;
+	}
+
+    start = clock();
+	qsort(items, count, sizeof(int), compare);
+	end = clock();
+
+
+	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	cout << "¬рем€ выполнени€ qsort при возростании до половины,а после при убывании: " << cpu_time_used << " секунд" << endl;
 }
