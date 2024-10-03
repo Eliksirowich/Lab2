@@ -286,7 +286,7 @@ int main() {
 
 
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+	cout << "Время выполнения shell при возрастании:  " << cpu_time_used << " секунд" << endl;
 	start = 0;
 	end = 0;
 	start = clock();
@@ -294,7 +294,7 @@ int main() {
 
 	end = clock();
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+	cout << "Время выполнения qs при возрастании: " << cpu_time_used << " секунд" << endl;
 
 	delete[] items; */
 
@@ -323,14 +323,14 @@ int main() {
 
 
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+	cout << "Время выполнения shell при убывании: " << cpu_time_used << " секунд" << endl;
 
 	start = clock();
 	qs(items, 0, count - 1);
 
 	end = clock();
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-	cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+	cout << "Время выполнения qs при убывании: " << cpu_time_used << " секунд" << endl;
 
 	delete[] items;*/
 
@@ -363,20 +363,20 @@ int main() {
 
 
 		cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-		cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+		cout << "Время выполнения shell при возростании до половины,а после при убывании: " << cpu_time_used << " секунд" << endl;
 
 		start = clock();
 		qs(items, 0, count - 1);
 
 		end = clock();
 		cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
-		cout << "Время выполнения: " << cpu_time_used << " секунд" << endl;
+		cout << "Время выполнения qs при возростании до половины,а после при убывании: " << cpu_time_used << " секунд" << endl;
 
 		delete[] items;*/
 
 
-		//Задание 2.5
-     srand(time(NULL));
+		//Задание 2.5(возрастание)
+     /*srand(time(NULL));
      setlocale(LC_ALL, "RUS");
 
      clock_t start, end;
@@ -411,6 +411,37 @@ int main() {
  
 
 
-	 system("pause");
+	 system("pause");*/
+
+	 //Задание 2.5(возрастание)
+     srand(time(NULL));
+     setlocale(LC_ALL, "RUS");
+
+     clock_t start, end;
+     double cpu_time_used;
+
+     int count = 10000;
+     int* items = new int[count];
+
+
+     for (int i = 0; i < count; i++) {
+	     items[i] = i + 1;
+	     cout << items[i] << endl;
+     }
+
+
+	 start = clock();
+	 qsort(items, count, sizeof(int), compare);
+	 end = clock();
+	 for (int i = 0; i < count; i++)
+	 {
+
+		 cout << items[i] << endl;
+
+
+	 }
+
+	 cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	 cout << "Время работы qsort при возрастании: " << cpu_time_used << " секунд" << endl;
 	
 }
